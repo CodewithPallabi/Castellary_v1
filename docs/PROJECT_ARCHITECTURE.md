@@ -41,7 +41,7 @@ graph TD
 ## 🎭 Animation & Transition System
 
 1. **PowerPoint Easing:** Built using Framer Motion with custom cubic bezier settings (`cubic-bezier(0.16, 1, 0.3, 1)`) and `will-change` properties for 60fps GPU acceleration.
-2. **Drift Particle Overlays:** Dynamic particle sweeps mapped to active civilization themes (e.g. fire embers for medieval, code pixels for cyberpunk, sakura petals for samurai).
+2. **Drift Particle Overlays:** Dynamic particle sweeps mapped to active civilization themes (e.g. fire embers for medieval, Sakura petals for samurai).
 3. **Entrance Staggers:** Content items rise slightly (`y: 15` or `y: 30`) while fading in to build layers sequentially.
 
 ---

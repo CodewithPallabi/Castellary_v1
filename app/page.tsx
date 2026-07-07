@@ -2,15 +2,19 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Navbar from '@/components/landing/Navbar/Navbar';
 import Scene01Awakening from '@/components/landing/Scene01Awakening';
-import Scene02Challenge from '@/components/landing/Scene02Challenge';
-import Scene03BattleBegins from '@/components/landing/Scene03BattleBegins';
-import SceneShowcase from '@/components/landing/SceneShowcase';
-import Scene10GuildCharter from '@/components/landing/Scene10GuildCharter';
-import Scene11KeepPortal from '@/components/landing/Scene11KeepPortal';
 import { useRealmTheme } from '@/context/RealmThemeContext';
 import { CivilizationId } from '@/types';
+
+// Lazy-load below-the-fold slides to optimize initial page bundle size and speed up LCP
+const Scene02Challenge = dynamic(() => import('@/components/landing/Scene02Challenge'));
+const Scene03BattleBegins = dynamic(() => import('@/components/landing/Scene03BattleBegins'));
+const SceneShowcase = dynamic(() => import('@/components/landing/SceneShowcase'));
+const Scene10GuildCharter = dynamic(() => import('@/components/landing/Scene10GuildCharter'));
+const Scene11KeepPortal = dynamic(() => import('@/components/landing/Scene11KeepPortal'));
 
 export default function LandingPage() {
   const { setTheme } = useRealmTheme();
@@ -140,14 +144,21 @@ export default function LandingPage() {
             : "fixed top-[11px] left-[48px] w-[66px] h-[66px] z-50 flex items-center justify-center pointer-events-none"
         }
       >
-        <motion.img 
-          src="/logo/crest.png" 
-          alt="Castellary Logo" 
-          className="w-full h-full object-contain drop-shadow-[0_0_12px_rgba(212,175,55,0.25)]"
+        <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.75 }}
-        />
+          className="relative w-full h-full"
+        >
+          <Image
+            src="/logo/crest.png" 
+            alt="Castellary Logo" 
+            fill
+            priority
+            sizes="160px"
+            className="object-contain filter drop-shadow-[0_0_12px_rgba(212,175,55,0.25)]"
+          />
+        </motion.div>
       </motion.div>
 
       {/* Cinematic Navigation Header */}

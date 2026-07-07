@@ -8,6 +8,7 @@ import { useAudioController } from '@/hooks/useAudioController';
 import { useRealmTheme } from '@/context/RealmThemeContext';
 import { HeroClass } from '@/types';
 import { Crown, Wand2, Sword } from 'lucide-react';
+import Image from 'next/image';
 
 interface Scene11Props {
   isActive: boolean;
@@ -65,10 +66,16 @@ export default function Scene11KeepPortal({ isActive }: Scene11Props) {
   return (
     <section className="relative w-full h-[100svh] overflow-hidden bg-black flex flex-col justify-center items-center p-6 sm:p-12 md:p-20 snap-start snap-always">
       {/* Background Gate interior - Skin matches civilization */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-30 select-none pointer-events-none filter brightness-[0.35]"
-        style={{ backgroundImage: `url(${getBgPath(activeThemeId)})` }}
-      />
+      <div className="absolute inset-0 select-none pointer-events-none filter brightness-[0.35] opacity-30">
+        <Image
+          src={getBgPath(activeThemeId)}
+          alt="Keep Portal Background"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          loading="lazy"
+        />
+      </div>
 
       {/* Dark gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-transparent to-black/90 pointer-events-none" />

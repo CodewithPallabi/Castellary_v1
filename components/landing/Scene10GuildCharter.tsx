@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, BookOpen, ShieldCheck, Flame, Trophy } from 'lucide-react';
+import Image from 'next/image';
 
 interface Scene10Props {
   isActive: boolean;
@@ -41,10 +42,16 @@ export default function Scene10GuildCharter({ isActive, onComplete }: Scene10Pro
   return (
     <section className="relative w-full h-[100svh] overflow-hidden bg-black flex flex-col items-center justify-center p-6 sm:p-12 snap-start snap-always">
       {/* Background Medieval Environment (Slightly darker, not black) */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-45 select-none pointer-events-none filter brightness-[0.25]"
-        style={{ backgroundImage: "url(/themes/medieval/landing/background.png)" }}
-      />
+      <div className="absolute inset-0 select-none pointer-events-none filter brightness-[0.25] opacity-45">
+        <Image
+          src="/themes/medieval/landing/background.png"
+          alt="Medieval Guild Environment"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          loading="lazy"
+        />
+      </div>
       
       {/* Dark gradient mask */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-transparent to-black/90 pointer-events-none" />
@@ -83,21 +90,26 @@ export default function Scene10GuildCharter({ isActive, onComplete }: Scene10Pro
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 30 }}
                     transition={{ duration: 0.8, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                    style={{
-                      backgroundImage: 'url(/logo/shield.png)',
-                      backgroundSize: 'contain',
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat',
-                      filter: 'drop-shadow(0 15px 30px rgba(0, 0, 0, 0.75))'
-                    }}
                     className="w-[245px] h-[270px] p-8 pt-12 flex flex-col items-center justify-center text-center gap-4 relative group"
                   >
+                    {/* Shield Frame Background */}
+                    <div className="absolute inset-0 select-none pointer-events-none filter drop-shadow-[0_15px_30px_rgba(0,0,0,0.75)] z-0">
+                      <Image
+                        src="/logo/shield.png"
+                        alt="Shield Frame"
+                        fill
+                        sizes="245px"
+                        className="object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+
                     {/* Gold Thin-Line Icon */}
-                    <div className="text-keep-primary group-hover:scale-110 transition-transform">
+                    <div className="text-keep-primary group-hover:scale-110 transition-transform z-10">
                       <Icon className="w-8 h-8 stroke-[1.25]" />
                     </div>
 
-                    <div className="flex flex-col gap-2 max-w-[170px]">
+                    <div className="flex flex-col gap-2 max-w-[170px] z-10">
                       <h3 className="text-sm font-black tracking-[0.15em] text-white font-keep-display">
                         {step.title}
                       </h3>

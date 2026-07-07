@@ -13,7 +13,7 @@ This walkthrough details the purpose, structure, props, and dependencies of ever
   - `HeroSessionProvider`
 
 ### 2. [app/page.tsx](file:///home/pallabi-panja/Projects/CASTELLARY_V1/CASTELLARY/app/page.tsx)
-* **Purpose:** Implements the presentation slide deck landing experience. It listens to user scroll wheel inputs and arrow keys to transition slides using GPU translate transforms.
+* **Purpose:** Implements the presentation slide deck landing experience. It listens to user scroll wheel inputs and arrow keys to transition slides using GPU translate transforms. Optimized with lazy loading on below-the-fold slides.
 
 ### 3. [app/dashboard/page.tsx](file:///home/pallabi-panja/Projects/CASTELLARY_V1/CASTELLARY/app/dashboard/page.tsx)
 * **Purpose:** Serves as the main board entrypoint. Integrates sidebar navigation, top bar levels, quest boards, and active campaign logs.

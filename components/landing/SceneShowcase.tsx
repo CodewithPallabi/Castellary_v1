@@ -10,6 +10,8 @@ import { CivilizationId } from '@/types';
 import { ThemeConfig, medievalTheme, romeTheme, cyberpunkTheme, samuraiTheme, roboTheme, blockcraftTheme } from '@/lib/theme';
 import { useAudioController } from '@/hooks/useAudioController';
 
+import Image from 'next/image';
+
 interface SceneShowcaseProps {
   themeId: CivilizationId;
   isActive: boolean;
@@ -94,14 +96,18 @@ export default function SceneShowcase({ themeId, isActive, onComplete }: SceneSh
       {/* Background Environment (Sharp, unblurred, premium visual hero) */}
       <motion.div
         style={{ x: bgParallax.x, y: bgParallax.y }}
-        className="absolute inset-0 z-0 bg-cover bg-center opacity-55 select-none pointer-events-none"
+        className="absolute inset-0 z-0 select-none pointer-events-none opacity-55"
         initial={{ scale: 1.05 }}
         animate={isActive ? { scale: 1.01 } : { scale: 1.05 }}
         transition={{ duration: 7, ease: 'easeOut' }}
       >
-        <div 
-          className="w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${getBgPath(themeId)})` }}
+        <Image
+          src={getBgPath(themeId)}
+          alt={`${activeConfig.name} Background`}
+          fill
+          sizes="100vw"
+          className="object-cover"
+          loading="lazy"
         />
       </motion.div>
 

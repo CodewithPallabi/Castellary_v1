@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { useThemeConfig } from '@/hooks/useThemeConfig';
 
 interface Scene01Props {
@@ -16,12 +17,20 @@ export default function Scene01Awakening({ isActive, onComplete }: Scene01Props)
     <section className="relative w-full h-[100svh] overflow-hidden bg-black flex items-center justify-start snap-start snap-always">
       {/* Background Castle Scenery - Fades in, full screen, uncropped */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center select-none pointer-events-none filter brightness-[0.6] z-0"
-        style={{ backgroundImage: `url(${getAsset('hero.background')})` }}
+        className="absolute inset-0 select-none pointer-events-none filter brightness-[0.6] z-0"
         initial={{ opacity: 0 }}
         animate={isActive ? { opacity: 0.75 } : { opacity: 0 }}
         transition={{ duration: 1.5, ease: 'easeOut' }}
-      />
+      >
+        <Image
+          src={getAsset('hero.background')}
+          alt="Ruined Castle Background"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </motion.div>
       
       {/* Subtle dark gradient mask on the left third to guarantee typography contrast */}
       <div className="absolute inset-y-0 left-0 w-[55%] bg-gradient-to-r from-black via-black/45 to-transparent pointer-events-none z-1" />

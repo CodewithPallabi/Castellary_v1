@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, MotionValue } from 'framer-motion';
+import Image from 'next/image';
 
 interface RealmCharacterProps {
   charPath: string;
@@ -50,12 +51,20 @@ export default function RealmCharacter({
 
       {/* Hero Illustration */}
       <motion.div
-        className="w-full h-full bg-contain bg-no-repeat bg-bottom"
-        style={{ backgroundImage: `url(${charPath})` }}
+        className="relative w-full h-full"
         initial={{ opacity: 0, y: 80 }}
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 80 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      />
+      >
+        <Image
+          src={charPath}
+          alt="Campaign Hero Leader"
+          fill
+          sizes="(max-width: 640px) 320px, 600px"
+          className="object-contain object-bottom"
+          loading="lazy"
+        />
+      </motion.div>
     </motion.div>
   );
 }

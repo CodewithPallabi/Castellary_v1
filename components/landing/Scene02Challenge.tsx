@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 interface Scene02Props {
   isActive: boolean;
@@ -12,10 +13,16 @@ export default function Scene02Challenge({ isActive, onComplete }: Scene02Props)
   return (
     <section className="relative w-full h-[100svh] overflow-hidden bg-black flex flex-col items-center justify-center p-6 sm:p-12 snap-start snap-always">
       {/* Background Castle scenery (same clean castle image from Slide 01, blurred and darkened) */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-65 select-none pointer-events-none filter blur-[3px] brightness-[0.22]"
-        style={{ backgroundImage: "url(/themes/medieval/hero/background.png)" }}
-      />
+      <div className="absolute inset-0 select-none pointer-events-none filter blur-[3px] brightness-[0.22] opacity-65">
+        <Image
+          src="/themes/medieval/hero/background.png"
+          alt="Blurred Castle Scenery"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          loading="lazy"
+        />
+      </div>
       
       {/* Subtle vignette layer to improve text legibility */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-transparent to-black/90 pointer-events-none z-1" />
@@ -28,14 +35,17 @@ export default function Scene02Challenge({ isActive, onComplete }: Scene02Props)
             animate={{ opacity: 0.85 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
-            style={{
-              backgroundImage: 'url(/logo/shield.png)',
-              backgroundSize: 'contain',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
             className="absolute inset-6 sm:inset-10 md:inset-14 select-none pointer-events-none z-10"
-          />
+          >
+            <Image
+              src="/logo/shield.png"
+              alt="Decorative Manuscript Frame"
+              fill
+              sizes="(max-width: 768px) 100vw, 1200px"
+              className="object-contain"
+              loading="lazy"
+            />
+          </motion.div>
         )}
       </AnimatePresence>
 

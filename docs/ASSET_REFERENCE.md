@@ -6,8 +6,7 @@ This document maps all images, backdrops, character illustrations, and audio tra
 
 ## 🎨 Layout Frames & Graphics
 
-* **`/logo/crest.png`**: The main emblem logo of Castellary, displayed in the center during loading sequences and fixed in the header during slide deck navigation.
-* **`/logo/border.jpg`**: Symmetrical gold border ornament, used on Slide 2 as the manuscript frame.
+* **`/logo/crest.png`**: The main emblem logo of Castellary, optimized using Next.js Image component with priority loading.
 * **`/logo/shield.png`**: The medieval shield card container, used in Slide 2 and Slide 10 steps.
 
 ---
@@ -15,7 +14,6 @@ This document maps all images, backdrops, character illustrations, and audio tra
 ## 🗺️ Campaign Realm Environments
 
 * **`/themes/medieval/hero/background.png`**: Ruined medieval castle at blue hour (Slide 01 and Slide 02).
-* **`/themes/medieval/landing/library.jpg`**: Candle-lit castle archive library.
 * **`/themes/medieval/boss/demon.jpg`**: Volcanic mountain with the devil raid boss.
 * **`/themes/roman/landing/background.webp`**: Classical Roman marble coliseum at sunset.
 * **`/themes/cyberpunk/landing/background.webp`**: Neon-drenched futuristic cyberpunk skyline.

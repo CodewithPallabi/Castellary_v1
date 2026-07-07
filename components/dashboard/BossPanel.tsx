@@ -7,6 +7,7 @@ import ProgressBar from '../ui/ProgressBar';
 import GlassKeepPanel from '../ui/GlassKeepPanel';
 import { MicroAnimations } from '@/lib/motion/micro';
 import { Swords } from 'lucide-react';
+import Image from 'next/image';
 
 interface BossPanelProps {
   kingdom: Kingdom;
@@ -87,9 +88,17 @@ export default function BossPanel({ kingdom }: BossPanelProps) {
         <motion.div
           animate={!isDefeated ? MicroAnimations.breath.animate : {}}
           transition={MicroAnimations.breath.transition}
-          className="w-32 h-32 bg-contain bg-center bg-no-repeat drop-shadow-[0_0_20px_rgba(239,68,68,0.3)]"
-          style={{ backgroundImage: `url(${getBossPath(kingdom.themeId)})` }}
-        />
+          className="relative w-32 h-32 filter drop-shadow-[0_0_20px_rgba(239,68,68,0.3)]"
+        >
+          <Image
+            src={getBossPath(kingdom.themeId)}
+            alt={boss.name}
+            fill
+            sizes="128px"
+            className="object-contain"
+            loading="lazy"
+          />
+        </motion.div>
       </div>
     </GlassKeepPanel>
   );

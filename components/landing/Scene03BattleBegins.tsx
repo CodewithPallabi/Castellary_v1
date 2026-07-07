@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 interface Scene03Props {
   isActive: boolean;
@@ -13,12 +14,20 @@ export default function Scene03BattleBegins({ isActive, onComplete }: Scene03Pro
     <section className="relative w-full h-[100svh] overflow-hidden bg-black flex items-center justify-start p-16 sm:p-24 snap-start snap-always">
       {/* Background Volcanic Devil Boss (Full Bleed AAA Artwork poster, sharp, unblurred) */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center select-none pointer-events-none filter brightness-[0.55] z-0"
-        style={{ backgroundImage: "url(/themes/medieval/boss/demon.jpg)" }}
+        className="absolute inset-0 select-none pointer-events-none filter brightness-[0.55] z-0"
         initial={{ opacity: 0 }}
         animate={isActive ? { opacity: 0.85 } : { opacity: 0 }}
         transition={{ duration: 1.2, ease: 'easeOut' }}
-      />
+      >
+        <Image
+          src="/themes/medieval/boss/demon.jpg"
+          alt="Volcanic Devil Boss Background"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          loading="lazy"
+        />
+      </motion.div>
       
       {/* Gradient mask to focus left text readability */}
       <div className="absolute inset-y-0 left-0 w-[55%] bg-gradient-to-r from-black via-black/55 to-transparent pointer-events-none z-1" />

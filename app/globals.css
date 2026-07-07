@@ -53,6 +53,15 @@ body {
   background: var(--color-keep-glass);
   border: 1px solid var(--color-keep-border);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Global utility overrides to accelerate all glassmorphic components */
+.backdrop-blur-md, .backdrop-blur-lg {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 /* Text glow styles */
