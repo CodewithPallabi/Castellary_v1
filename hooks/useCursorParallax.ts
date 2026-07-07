@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useMotionValue, useSpring } from 'framer-motion';
 
-export function useCursorParallax(strength: number = 20) {
+export function useCursorParallax(strength: number = 20, enabled: boolean = true) {
   const xValue = useMotionValue(0);
   const yValue = useMotionValue(0);
 
@@ -12,7 +12,7 @@ export function useCursorParallax(strength: number = 20) {
   const y = useSpring(yValue, springConfig);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || !enabled) return;
 
     const handleMouseMove = (event: MouseEvent) => {
       const { innerWidth, innerHeight } = window;
@@ -24,11 +24,11 @@ export function useCursorParallax(strength: number = 20) {
       yValue.set(normY * strength);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [xValue, yValue, strength]);
+  }, [xValue, yValue, strength, enabled]);
 
   return { x, y };
 }

@@ -33,9 +33,9 @@ const SceneShowcase = memo(function SceneShowcase({ themeId, isActive, onComplet
   const activeConfig = themeMap[themeId] || medievalTheme;
 
   // Parallax vectors
-  const bgParallax = useCursorParallax(5);      // Subtle bg offset
-  const charParallax = useCursorParallax(15);   // Moderate character offset
-  const contentParallax = useCursorParallax(25); // Heavy panel offset
+  const bgParallax = useCursorParallax(5, isActive);      // Subtle bg offset
+  const charParallax = useCursorParallax(15, isActive);   // Moderate character offset
+  const contentParallax = useCursorParallax(25, isActive); // Heavy panel offset
 
   useEffect(() => {
     if (isActive) {
@@ -82,10 +82,11 @@ const SceneShowcase = memo(function SceneShowcase({ themeId, isActive, onComplet
     const c = colors[themeId] || 'rgba(255,255,255,0.1)';
     return (
       <div 
-        className="absolute inset-0 pointer-events-none mix-blend-screen opacity-20 z-2 animate-drift"
+        className="absolute inset-x-0 top-0 bottom-[-40px] pointer-events-none mix-blend-screen opacity-20 z-2 animate-drift"
         style={{
           backgroundImage: `radial-gradient(circle, ${c} 1.5px, transparent 2px)`,
           backgroundSize: '40px 40px',
+          willChange: 'transform'
         }}
       />
     );
@@ -149,11 +150,11 @@ const SceneShowcase = memo(function SceneShowcase({ themeId, isActive, onComplet
 
       <style jsx global>{`
         @keyframes particleDrift {
-          0% { background-position: 0px 800px; }
-          100% { background-position: 0px 0px; }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(0, -40px, 0); }
         }
         .animate-drift {
-          animation: particleDrift 16s linear infinite;
+          animation: particleDrift 0.8s linear infinite;
         }
       `}</style>
     </section>
