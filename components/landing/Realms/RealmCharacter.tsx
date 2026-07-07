@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 
@@ -13,7 +13,7 @@ interface RealmCharacterProps {
   themeId?: string;
 }
 
-export default function RealmCharacter({
+const RealmCharacter = memo(function RealmCharacter({
   charPath,
   isActive,
   align,
@@ -67,5 +67,7 @@ export default function RealmCharacter({
       </motion.div>
     </motion.div>
   );
-}
+});
+
+export default RealmCharacter;
 export type RealmCharacterType = typeof RealmCharacter;

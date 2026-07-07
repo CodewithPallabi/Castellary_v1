@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useHeroSession } from '@/context/HeroSessionContext';
@@ -14,7 +14,7 @@ interface Scene11Props {
   isActive: boolean;
 }
 
-export default function Scene11KeepPortal({ isActive }: Scene11Props) {
+const Scene11KeepPortal = memo(function Scene11KeepPortal({ isActive }: Scene11Props) {
   const router = useRouter();
   const { login, signup } = useHeroSession();
   const { playClick, playVictory } = useAudioController();
@@ -265,5 +265,7 @@ export default function Scene11KeepPortal({ isActive }: Scene11Props) {
       </div>
     </section>
   );
-}
+});
+
+export default Scene11KeepPortal;
 export type Scene11KeepPortalType = typeof Scene11KeepPortal;

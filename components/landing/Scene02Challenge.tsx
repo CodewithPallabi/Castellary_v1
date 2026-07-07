@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
@@ -9,7 +9,7 @@ interface Scene02Props {
   onComplete: () => void;
 }
 
-export default function Scene02Challenge({ isActive, onComplete }: Scene02Props) {
+const Scene02Challenge = memo(function Scene02Challenge({ isActive, onComplete }: Scene02Props) {
   return (
     <section className="relative w-full h-[100svh] overflow-hidden bg-black flex flex-col items-center justify-center p-6 sm:p-12 snap-start snap-always">
       {/* Background Castle scenery (same clean castle image from Slide 01, blurred and darkened) */}
@@ -106,5 +106,7 @@ export default function Scene02Challenge({ isActive, onComplete }: Scene02Props)
       </div>
     </section>
   );
-}
+});
+
+export default Scene02Challenge;
 export type Scene02ChallengeType = typeof Scene02Challenge;

@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, BookOpen, ShieldCheck, Flame, Trophy } from 'lucide-react';
 import Image from 'next/image';
@@ -10,7 +10,7 @@ interface Scene10Props {
   onComplete: () => void;
 }
 
-export default function Scene10GuildCharter({ isActive, onComplete }: Scene10Props) {
+const Scene10GuildCharter = memo(function Scene10GuildCharter({ isActive, onComplete }: Scene10Props) {
   const steps = [
     {
       title: "CREATE GUILD",
@@ -150,5 +150,7 @@ export default function Scene10GuildCharter({ isActive, onComplete }: Scene10Pro
       </div>
     </section>
   );
-}
+});
+
+export default Scene10GuildCharter;
 export type Scene10GuildCharterType = typeof Scene10GuildCharter;

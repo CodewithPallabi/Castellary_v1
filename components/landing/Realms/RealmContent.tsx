@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, MotionValue } from 'framer-motion';
 import { useAudioController } from '@/hooks/useAudioController';
 
@@ -14,7 +14,7 @@ interface RealmContentProps {
   onCtaClick: () => void;
 }
 
-export default function RealmContent({
+const RealmContent = memo(function RealmContent({
   name,
   quote,
   description,
@@ -93,5 +93,7 @@ export default function RealmContent({
       </div>
     </motion.div>
   );
-}
+});
+
+export default RealmContent;
 export type RealmContentType = typeof RealmContent;

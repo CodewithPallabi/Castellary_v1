@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useThemeConfig } from '@/hooks/useThemeConfig';
@@ -10,7 +10,7 @@ interface Scene01Props {
   onComplete: () => void;
 }
 
-export default function Scene01Awakening({ isActive, onComplete }: Scene01Props) {
+const Scene01Awakening = memo(function Scene01Awakening({ isActive, onComplete }: Scene01Props) {
   const { getAsset } = useThemeConfig();
 
   return (
@@ -68,8 +68,8 @@ export default function Scene01Awakening({ isActive, onComplete }: Scene01Props)
           </motion.div>
         )}
       </AnimatePresence>
-
-
     </section>
   );
-}
+});
+
+export default Scene01Awakening;

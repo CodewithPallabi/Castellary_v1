@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import { motion } from 'framer-motion';
 import RealmCharacter from './Realms/RealmCharacter';
 import RealmContent from './Realms/RealmContent';
@@ -27,7 +27,7 @@ const themeMap: Record<CivilizationId, ThemeConfig> = {
   blockcraft: blockcraftTheme
 };
 
-export default function SceneShowcase({ themeId, isActive, onComplete }: SceneShowcaseProps) {
+const SceneShowcase = memo(function SceneShowcase({ themeId, isActive, onComplete }: SceneShowcaseProps) {
   const { setTheme } = useRealmTheme();
   const { playAmbient } = useAudioController();
   const activeConfig = themeMap[themeId] || medievalTheme;
@@ -158,5 +158,7 @@ export default function SceneShowcase({ themeId, isActive, onComplete }: SceneSh
       `}</style>
     </section>
   );
-}
+});
+
+export default SceneShowcase;
 export type SceneShowcaseType = typeof SceneShowcase;

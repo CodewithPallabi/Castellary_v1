@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
@@ -9,7 +9,7 @@ interface Scene03Props {
   onComplete: () => void;
 }
 
-export default function Scene03BattleBegins({ isActive, onComplete }: Scene03Props) {
+const Scene03BattleBegins = memo(function Scene03BattleBegins({ isActive, onComplete }: Scene03Props) {
   return (
     <section className="relative w-full h-[100svh] overflow-hidden bg-black flex items-center justify-start p-16 sm:p-24 snap-start snap-always">
       {/* Background Volcanic Devil Boss (Full Bleed AAA Artwork poster, sharp, unblurred) */}
@@ -70,5 +70,7 @@ export default function Scene03BattleBegins({ isActive, onComplete }: Scene03Pro
       </AnimatePresence>
     </section>
   );
-}
+});
+
+export default Scene03BattleBegins;
 export type Scene03BattleBeginsType = typeof Scene03BattleBegins;
