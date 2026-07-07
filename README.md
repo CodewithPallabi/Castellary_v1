@@ -16,7 +16,7 @@
 > This repository currently contains the **Frontend MVP**. Backend services, AI quest generation, authentication, and real-time collaboration are planned.
 
 ## 📖 Table of Contents
-- 🎯 Overviews
+- 🎯 Overview
 - ❗ The Problem
 - ⚔️ Why Castellary?
 - 🧠 How It Works
