@@ -78,7 +78,7 @@ Rather than forcing motivation through reminders alone, Castellary makes progres
 # How It Works
 
 ```text
-Assignment
+  Assignment
       │
       ▼
  AI analyzes requirements (Planned)
